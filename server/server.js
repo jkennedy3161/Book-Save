@@ -7,10 +7,9 @@ var bookRouter = require('./routes/bookRoutes');
 require('./middleware/middleware')(app, express);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/books');
+mongoose.connect('mongodb://127.0.0.1:27017/books');
 
 // setup routes
 app.use('/books', bookRouter);
 
-app.listen(3000);
-console.log('server runnning');
+module.exports = app;
