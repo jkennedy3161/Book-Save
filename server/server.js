@@ -4,11 +4,12 @@ var mongoose = require('mongoose');
 
 var api = require('./api/api');
 var err = require('./middleware/err');
+var config = require('./config/config');
 // handles serving static assets and returning json body from requests
 require('./middleware/middleware')(app, express);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1:27017/books');
+mongoose.connect(config.db.url);
 
 // setup routes
 app.use('/api', api);
