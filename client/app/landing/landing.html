@@ -1,0 +1,21 @@
+<div ng-controller="LandingController">
+  <div class="container searc">
+    <form ng-submit="fetchBooks(search)">
+      <input type="text" name="search" ng-model="search">
+      <button class="btn btn-success">Search</button>
+    </form>
+  </div>
+  <div class="row search" ng-repeat="book in books">
+    <div class="col-md-4 search-inner">
+    <img ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
+    </div>
+    <div class="col-md-4 search-inner">
+      <h2>{{ book.volumeInfo.title }}</h2>
+      <h4>Authors: {{ book.volumeInfo.authors[0] }}</h4>
+    </div>
+    <div class="col-md-4 search-inner">
+      <h4>${{ book.saleInfo.retailPrice.amount }}</h4>
+    </div>
+  </div>
+
+</div>
