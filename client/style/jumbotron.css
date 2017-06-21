@@ -3,3 +3,14 @@ body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
+
+.search {
+  text-align: center;
+  background-color: grey;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.search-inner {
+  color: #fff;
+}
