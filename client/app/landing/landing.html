@@ -1,6 +1,6 @@
 <div ng-controller="LandingController">
   <div class="container">
-    <form ng-submit="fetchBooks(search)">
+    <form ng-submit="fetchBooks(search, 0)">
       <input type="text" name="search" ng-model="search">
       <button class="btn btn-success">Search</button>
     </form>
@@ -20,10 +20,25 @@
       <h5 ng-show="!book.volumeInfo.publishedDate">Date not available</h5>
     </div>
   </div>
-  <div ng-show="!books" class="row">
-    <div class="col-md-8">
-      <h3>No results found...</h3>
+  <!-- show if no books are found -->
+  <div class="row search" ng-show="books.length === 0 || books === undefined">
+    <div class="col-md-4 search-inner">
     </div>
+    <div class="col-md-4 search-inner">
+      <h3>No books found...</h3>
+    </div>
+    <div class="col-md-4 search-inner">
+    </div>
+  </div>
+  <div class="container page-display">
+    <div class="row">
+      <div class="col" ng-repeat="page in pages track by $index">
+        <h5>{{ page }}</h5>
+      </div>
+    </div>
+  <form ng-submit="nextPage(index)" class="nextpage">
+    <button ng-show="books.length > 0" class="btn btn-success">Next Page</button>
+  </form>
   </div>
 
 </div>

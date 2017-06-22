@@ -14,3 +14,16 @@ body {
 .search-inner {
   color: #fff;
 }
+
+.col {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+div.page-display {
+  position: absolute;
+}
+
+.nextpage {
+  position: relative;
+}
