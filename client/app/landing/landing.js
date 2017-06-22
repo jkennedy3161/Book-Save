@@ -8,6 +8,7 @@ angular.module('bookstore.landing', [])
   $scope.index = 0;
   $scope.fetchBooks = function(search, index) {
     $scope.savedSearch = search;
+    $scope.page = ++index;
     $scope.pages = [];
     Landing.getBooks(search, index)
       .then(function(book) {
@@ -25,6 +26,17 @@ angular.module('bookstore.landing', [])
     Landing.getBooks($scope.savedSearch, $scope.index)
       .then(function(book) {
         $scope.books = book;
+      })
+  };
+  $scope.saveBook = function(book) {
+    var bookObj = {
+      title: book.volumeInfo.title,
+      author: book.volumeInfo.authors[0],
+      imageLinks: [book.volumeInfo.imageLinks.smallThumbnail, book.volumeInfo.thumbnail]
+    };
+    Landing.saveBook(bookObj)
+      .then(function(book) {
+        alert(bookObj.title + ' saved to your shelf!');
       })
   };
 }]);
