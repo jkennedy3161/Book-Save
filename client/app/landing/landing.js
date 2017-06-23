@@ -1,32 +1,20 @@
 angular.module('bookstore.landing', [])
-.controller('LandingController', ['$scope', '$http', 'Landing', function($scope, $http, Landing) {
+.controller('LandingController', ['$scope', '$http', 'Landing', function($scope, $routeParams, Landing) {
   $scope.books = [];
-  $scope.search = '';
   $scope.savedSearch = '';
   $scope.page = 1;
-  $scope.pages = [];
   $scope.index = 0;
   $scope.fetchBooks = function(search, index) {
-    $scope.savedSearch = search;
-    $scope.page = ++index;
-    $scope.pages = [];
     Landing.getBooks(search, index)
       .then(function(book) {
-        $scope.books = book;
+        $scope.books = $scope.books.concat(book.items);
         // clear search field
         $scope.search = '';
-        $scope.pages.push($scope.page);
+        $scope.index += 41;
+        console.log('startIndex now ' + $scope.index);
+        $scope.savedSearch = search;
+        $scope.loadMore = false;
       });
-  };
-  $scope.nextPage = function(startIndex) {
-    $scope.page++;
-    $scope.pages.push($scope.page);
-    $scope.books = [];
-    $scope.index += 41;
-    Landing.getBooks($scope.savedSearch, $scope.index)
-      .then(function(book) {
-        $scope.books = book;
-      })
   };
   $scope.saveBook = function(book) {
     var bookObj = {

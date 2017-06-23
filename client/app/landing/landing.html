@@ -8,13 +8,13 @@
       </div>
     </div>
   <div class="container">
-    <form ng-submit="fetchBooks(search, 0)">
+    <form ng-submit="fetchBooks(search, index)">
       <input type="text" name="search" ng-model="search">
       <button class="btn btn-success">Search</button>
     </form>
   </div>
   <!-- show books that are purchasable only-->
-  <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books">
+  <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books track by $index">
     <div class="col-md-4 search-inner">
     <a class="select" ng-click="saveBook(book)"><img ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
     </a></div>
@@ -28,6 +28,9 @@
       <h5 ng-show="!book.volumeInfo.publishedDate">Date not available</h5>
     </div>
   </div>
+    <center>
+      <button ng-show="index > 0" ng-click="fetchBooks(savedSearch, index)" class="btn btn-success">View More...</button>
+    </center>
   <!-- show if no books are found -->
   <div class="row search" ng-show="books.length === 0 || books === undefined">
     <div class="col-md-4 search-inner">
@@ -37,16 +40,6 @@
     </div>
     <div class="col-md-4 search-inner">
     </div>
-  </div>
-  <div class="container page-display">
-    <div class="row">
-      <div class="col" ng-repeat="page in pages track by $index">
-        <h5>{{ page }}</h5>
-      </div>
-    </div>
-  <form ng-submit="nextPage(index)" class="nextpage">
-    <button ng-show="books.length > 0" class="btn btn-success">Next Page</button>
-  </form>
   </div>
 
 </div>
