@@ -1,8 +1,10 @@
 var router = require('express').Router();
+var userController = require('../controllers/userController');
+
+router.param('id', userController.params);
 
 router.route('/')
-  .get(function(req, res) {
-    res.send({ok: true});
-  });
+  .get(userController.get)
+  .post(userController.post);
 
 module.exports = router;

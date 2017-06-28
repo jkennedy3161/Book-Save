@@ -1,5 +1,4 @@
 var User = require('../models/userModel.js');
-var _ - require('lodash');
 
 exports.params = function(req, res, next, id) {
   User.findById(id)
@@ -13,4 +12,24 @@ exports.params = function(req, res, next, id) {
     }, function(err) {
       next(err);
     });
+};
+
+exports.get = function(req, res, next) {
+  User.find({})
+    .then(function(user) {
+      res.json(user);
+    }, function(err) {
+      next(err);
+    })
+};
+
+exports.post = function(req, res, next) {
+  var newUser = req.body;
+
+  User.create(newUser)
+    .then(function(user) {
+      res.json(user);
+    }, function(err) {
+      next(err);
+    })
 };
