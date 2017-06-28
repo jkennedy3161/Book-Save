@@ -41,4 +41,21 @@ angular.module('bookstore.services', [])
   return {
     getShelf: getShelf
   };
+})
+.factory('Details', function($http) {
+  var bookInfo = function(id) {
+    return $http({
+      method: 'GET',
+      url: 'api/books/' + id,
+      ContentType: 'application/json'
+    })
+    .then(function(res) {
+      console.log(res.data)
+      return res.data;
+    });
+  }
+
+  return {
+    bookInfo: bookInfo
+  }
 });

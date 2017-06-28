@@ -18,3 +18,20 @@ body {
 .select {
   cursor: pointer;
 }
+
+div.details {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+img.img-small {
+  width: 10%;
+  height: 10%;
+  position: relative;
+}
+
+img.img-normal {
+  width: 50%;
+  height: 50%;
+  margin: 30px 0 0 30px;
+}

@@ -1,6 +1,7 @@
 angular.module('bookstore', [
   'bookstore.landing',
   'bookstore.shelf',
+  'bookstore.details',
   'bookstore.services',
   'ngRoute'])
 .controller('bookstoreController', function() {
@@ -14,5 +15,9 @@ angular.module('bookstore', [
     .when('/shelf', {
       templateUrl: 'app/shelf/shelf.html',
       controller: 'ShelfController'
+    })
+    .when('/details/:id', {
+      templateUrl: 'app/details/details.html',
+      controller: 'DetailsController'
     })
 })
