@@ -3,7 +3,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Bookstore</h1>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p>Search. Save. Add to Cart. Review. Share. Welcome to Bookstore! </p>
         <p><a class="btn btn-primary btn-lg" href="/#!/shelf" role="button">View Profile &raquo;</a></p>
       </div>
     </div>
@@ -16,11 +16,12 @@
   <!-- show books that are purchasable only-->
   <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books track by $index">
     <div class="col-md-4 search-inner">
-    <a class="select" ng-click="saveBook(book)"><img ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
-    </a></div>
+    <img class="select" ng-click="saveBook(book)" ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
+    </div>
     <div class="col-md-4 search-inner">
       <h2>{{ book.volumeInfo.title }}</h2>
       <h3>Authors: <h4 ng-repeat="author in book.volumeInfo.authors">{{ author }}</h4></h3>
+      <h6>{{ book.searchInfo.textSnippet }}</h6>
     </div>
     <div class="col-md-4 search-inner">
       <h4>${{ book.saleInfo.retailPrice.amount }}</h4>

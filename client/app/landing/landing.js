@@ -17,10 +17,15 @@ angular.module('bookstore.landing', [])
       });
   };
   $scope.saveBook = function(book) {
+    var filterArr = book.volumeInfo.imageLinks.thumbnail.split('&');
+    var thumbnail = filterArr[0] + '&' + filterArr[1] + '&' + filterArr[2] + '&' + 'zoom=0' + '&' +filterArr[5];
+    var smallThumbnail = filterArr[0] + '&' + filterArr[1] + '&' + filterArr[2] + '&' + 'zoom=1' + '&' +filterArr[5];
     var bookObj = {
       title: book.volumeInfo.title,
-      author: book.volumeInfo.authors[0],
-      imageLinks: [book.volumeInfo.imageLinks.smallThumbnail, book.volumeInfo.thumbnail]
+      authors: (book.volumeInfo.authors === undefined) ? 'No Authors' : book.volumeInfo.authors,
+      thumbnail: thumbnail,
+      smallThumbnail: smallThumbnail,
+      description: book.volumeInfo.description
     };
     Landing.saveBook(bookObj)
       .then(function(book) {
