@@ -23,6 +23,11 @@ exports.get = function(req, res, next) {
     })
 };
 
+exports.getOne = function(req, res, next) {
+  var user = req.user;
+  res.json(user);
+};
+
 exports.post = function(req, res, next) {
   var newUser = req.body;
 
@@ -32,4 +37,14 @@ exports.post = function(req, res, next) {
     }, function(err) {
       next(err);
     })
+};
+
+exports.delete = function(req, res, next) {
+  req.user.remove(function(err, removed) {
+    if (err) {
+      next(err);
+    } else {
+      res.json(removed);
+    }
+  })
 };

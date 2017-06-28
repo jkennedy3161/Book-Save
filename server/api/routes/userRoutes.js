@@ -7,4 +7,8 @@ router.route('/')
   .get(userController.get)
   .post(userController.post);
 
+router.route('/:id')
+  .get(userController.getOne)
+  .delete(userController.delete);
+
 module.exports = router;
