@@ -1,4 +1,20 @@
 angular.module('bookstore.services', [])
+.factory('Auth', function($http) {
+  var login = function(data) {
+    return $http({
+      method: 'POST',
+      url: '/api/users',
+      data: JSON.stringify(data),
+      ContentType: 'application/json'
+    })
+    .then(function(res) {
+      return res.data;
+    })
+  };
+  return {
+    login: login
+  }
+})
 .factory('Landing', function($http) {
   var getBooks = function(search, index) {
     return $http({
@@ -6,7 +22,7 @@ angular.module('bookstore.services', [])
       url: 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&printType=books&orderBy=relevance&filter=ebooks&maxResults=40&startIndex=' + index
     })
     .then(function(res) {
-      console.log(res.data);
+      //console.log(res.data);
       return res.data;
     });
   };
@@ -50,7 +66,7 @@ angular.module('bookstore.services', [])
       ContentType: 'application/json'
     })
     .then(function(res) {
-      console.log(res.data)
+      //console.log(res.data)
       return res.data;
     });
   }

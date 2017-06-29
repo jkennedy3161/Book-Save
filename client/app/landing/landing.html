@@ -1,17 +1,23 @@
 <div ng-controller="LandingController">
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Bookstore</a>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron">
       <div class="container">
         <h1>Bookstore</h1>
         <p>Search. Save. Add to Cart. Review. Share. Welcome to Bookstore! </p>
         <p><a class="btn btn-primary btn-lg" href="/#!/shelf" role="button">View Profile &raquo;</a></p>
       </div>
-    </div>
-  <div class="container">
-    <form ng-submit="fetchBooks(search, index)">
-      <input type="text" name="search" ng-model="search">
-      <button class="btn btn-success">Search</button>
-    </form>
+      <div class="container">
+        <form ng-submit="fetchBooks(search, index)">
+          <input type="text" name="search" ng-model="search">
+          <button class="btn btn-success">Search</button>
+        </form>
+      </div>
   </div>
   <!-- show books that are purchasable only-->
   <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books track by $index">

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bookstore</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <form name="form" ng-submit="login(username, password)" class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" placeholder="Username" class="form-control"
+          name="username"
+          ng-model="username"
+          required>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="form-control"
+          name="password"
+          ng-model="password"
+          required>
+        </div>
+          <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+
+<div ng-controller="AccountController">
+  <div class="jumbotron">
+      <div class="container">
+        <h1>Bookstore</h1>
+        <p>Search. Save. Add to Cart. Review. Share. Welcome to Bookstore! </p>
+        <h3>{{ test }}</h3>
+      </div>
+  </div>
+</div>
