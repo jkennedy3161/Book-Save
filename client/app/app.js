@@ -1,5 +1,6 @@
 angular.module('bookstore', [
   'bookstore.account',
+  'bookstore.signup',
   'bookstore.landing',
   'bookstore.shelf',
   'bookstore.details',
@@ -12,6 +13,10 @@ angular.module('bookstore', [
     .when('/', {
       templateUrl: 'app/account/account.html',
       controller: 'AccountController'
+    })
+    .when('/signup', {
+      templateUrl: 'app/signup/signup.html',
+      controller: 'SignUpController'
     })
     .when('/landing', {
       templateUrl: 'app/landing/landing.html',
