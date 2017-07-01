@@ -11,7 +11,8 @@ var BookSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'user'
     }
-  ]
+  ],
+  price: String
 });
 
 module.exports = mongoose.model('book', BookSchema);
