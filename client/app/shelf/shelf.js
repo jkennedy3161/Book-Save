@@ -1,16 +1,12 @@
 angular.module('bookstore.shelf', [])
-.controller('ShelfController', function($scope, $routeParams, Shelf, Details) {
+.controller('ShelfController', function($scope, $routeParams, Shelf, Details, $window) {
   $scope.collections = [];
   $scope.id = $routeParams.id;
+  $scope.userId = $window.localStorage.getItem('userId');
   $scope.getShelf = function() {
-    Shelf.getShelf()
+    Shelf.getShelf($scope.userId)
       .then(function(collections) {
         $scope.collections = collections;
       });
-  };
-  $scope.bookInfo = function(book) {
-    console.log(book._id);
-    console.log($routeParams.id);
-
   };
 })
