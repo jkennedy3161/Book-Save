@@ -9,7 +9,11 @@ var config = {
   test: 'testing',
   prod: 'production',
   port: process.env.PORT || 3000,
-  db: {url: 'mongodb://127.0.0.1:27017/books'}
+  db: {url: 'mongodb://127.0.0.1:27017/books'},
+  expireTime: '10d',
+  secrets: {
+    jwt: process.env.JWT || 'sushi'
+  }
 };
 
 process.env.NODE_ENV = process.env.NODE_ENV || config.dev;
