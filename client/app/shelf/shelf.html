@@ -20,12 +20,15 @@
   <div class="container cart">
     <div class="row window">
       <ul ng-repeat="book in cart track by $index">
-        <li>{{ book }}</li>
+        <li>{{ book.title }}</li>
       </ul></div>
       <div class="row">
         <h5>Total items: {{ cart.length }}</h5>
         <h5>Total price: {{ roundedPrice }}</h5>
       </div>
+      <button ng-show="cart.length > 0" class="btn btn-primary" ng-click="fakeBuy()">
+      Checkout
+      </button>
     </div>
   <div class="container" ng-init="getShelf()">
     <h2>Shelf</h2>
