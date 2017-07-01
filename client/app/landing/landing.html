@@ -1,16 +1,27 @@
-<div ng-controller="LandingController">
+<div ng-controller="LandingController" ng-init="userId()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Bookstore</a>
-      </div>
+      <a href="/#!/shelf"><span class="navbar-brand message">Hi {{ user.username }}</span></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bookstore</a>
+    </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <button type="submit" ng-click="signout()" class="btn nav-btn btn-primary">Log Out</button>
+        <a href="/#!/shelf"><button class="btn btn-sm btn-primary">View Profile</button></a>
     </div>
   </nav>
+  </div>
   <div class="jumbotron">
       <div class="container">
         <h1>Bookstore</h1>
         <p>Search. Save. Add to Cart. Review. Share. Welcome to Bookstore! </p>
-        <p><a class="btn btn-primary btn-lg" href="/#!/shelf" role="button">View Profile &raquo;</a></p>
+        <p></p>
       </div>
       <div class="container">
         <form ng-submit="fetchBooks(search, index)">
@@ -18,6 +29,10 @@
           <button class="btn btn-success">Search</button>
         </form>
       </div>
+  </div>
+  <div ng-show="alert" class="savedBook navbar-fixed-bottom alert alert-success alert-dismissable fade in" role="alert">
+  <a ng-click="alert = ''" class="close" aria-label="close">&times;</a>
+    <strong>Success! </strong>{{ alert }}
   </div>
   <!-- show books that are purchasable only-->
   <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books track by $index">

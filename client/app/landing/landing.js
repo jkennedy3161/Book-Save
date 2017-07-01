@@ -1,9 +1,19 @@
 angular.module('bookstore.landing', [])
-.controller('LandingController', ['$scope', '$http', 'Landing', function($scope, $routeParams, Landing) {
+.controller('LandingController', ['$scope', '$http', 'Landing', 'Auth', '$window', '$location', function($scope, $routeParams, Landing, Auth, $window, $location) {
   $scope.books = [];
   $scope.savedSearch = '';
   $scope.page = 1;
   $scope.index = 0;
+  $scope.token = $window.localStorage.getItem('access_token');
+  $scope.user = $window.localStorage.getItem('userId');
+  $scope.alert = '';
+  $scope.userId = function() {
+    Auth.me($scope.token)
+      .then(function(user) {
+        $scope.user = user;
+        $window.localStorage.setItem('userId', user._id);
+      })
+  };
   $scope.fetchBooks = function(search, index) {
     Landing.getBooks(search, index)
       .then(function(book) {
@@ -11,7 +21,7 @@ angular.module('bookstore.landing', [])
         // clear search field
         $scope.search = '';
         $scope.index += 41;
-        console.log('startIndex now ' + $scope.index);
+        //console.log('startIndex now ' + $scope.index);
         $scope.savedSearch = search;
         $scope.loadMore = false;
       });
@@ -25,11 +35,16 @@ angular.module('bookstore.landing', [])
       authors: (book.volumeInfo.authors === undefined) ? 'No Authors' : book.volumeInfo.authors,
       thumbnail: thumbnail,
       smallThumbnail: smallThumbnail,
-      description: book.volumeInfo.description
+      description: book.volumeInfo.description,
+      owners: [$scope.user]
     };
     Landing.saveBook(bookObj)
       .then(function(book) {
-        alert(bookObj.title + ' saved to your shelf!');
+        $scope.alert = (bookObj.title + ' saved to your shelf!');
       })
+  };
+  $scope.signout = function() {
+    $window.localStorage.clear();
+    $location.path('/');
   };
 }]);
