@@ -36,7 +36,8 @@ angular.module('bookstore.landing', [])
       thumbnail: thumbnail,
       smallThumbnail: smallThumbnail,
       description: book.volumeInfo.description,
-      owners: [$window.localStorage.getItem('userId')]
+      owners: [$window.localStorage.getItem('userId')],
+      price: book.saleInfo.retailPrice.amount
     };
     Landing.saveBook(bookObj)
       .then(function(book) {

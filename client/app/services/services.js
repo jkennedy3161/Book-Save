@@ -34,10 +34,22 @@ angular.module('bookstore.services', [])
       return res.data;
     });
   };
+  var removeBook = function(bookId) {
+    return $http({
+      method: 'DELETE',
+      url: '/api/books/' + bookId,
+      params: {access_token: $window.localStorage.getItem('access_token')},
+      ContentType: 'application/json'
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
   return {
     signup: signup,
     signin: signin,
-    me: me
+    me: me,
+    removeBook: removeBook
   }
 })
 .factory('Landing', function($http, $window) {
