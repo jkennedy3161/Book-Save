@@ -5,7 +5,13 @@ var BookSchema = new Schema({
   authors: [{type: String}],
   description: String,
   thumbnail: String,
-  smallThumbnail: String
+  smallThumbnail: String,
+  owners: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }
+  ]
 });
 
 module.exports = mongoose.model('book', BookSchema);
