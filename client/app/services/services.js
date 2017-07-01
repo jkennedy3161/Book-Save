@@ -55,6 +55,7 @@ angular.module('bookstore.services', [])
       method: 'POST',
       url: 'api/books',
       data: JSON.stringify(book),
+      ContentType: 'application/json',
       params: {access_token: $window.localStorage.getItem('access_token')}
     })
     .then(function(res) {
