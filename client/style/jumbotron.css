@@ -35,3 +35,16 @@ img.img-normal {
   height: 50%;
   margin: 30px 0 0 30px;
 }
+
+span.message {
+  display: inline-block;
+  float: right;
+}
+
+#navbar {
+  float: right;
+}
+
+.savedBook {
+  text-align: center;
+}
