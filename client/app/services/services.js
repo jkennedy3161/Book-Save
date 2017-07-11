@@ -92,9 +92,22 @@ angular.module('bookstore.services', [])
       return res.data;
     });
   };
+  var sendToken = function(data) {
+    return $http({
+      method: 'POST',
+      url: '/payment',
+      data: data,
+      ContentType: 'application/json'
+    })
+    .then(function(res) {
+      console.log(res.data);
+      return res.data;
+    });
+  };
 
   return {
-    getShelf: getShelf
+    getShelf: getShelf,
+    sendToken: sendToken
   };
 })
 .factory('Details', function($http) {

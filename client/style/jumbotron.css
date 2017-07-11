@@ -50,10 +50,16 @@ span.message {
 }
 
 div.cart {
-  border: 2px solid red;
-  height: 100%;
+  padding: 2em;
+  border: .75em solid grey;
+  background-color: silver;
+  height: 200%;
   width: 300px;
   float: right;
+}
+
+div.window:hover {
+  overflow-y: scroll;
 }
 
 div.window {
@@ -63,4 +69,17 @@ div.window {
 
 li {
   list-style: none;
+}
+
+.ng-invalid {
+  color: red;
+}
+
+.form {
+  float: right;
+  margin: 2em;
+  padding: 2em;
+  background-color: gray;
+  border-radius: 2em;
+  position: relative;
 }

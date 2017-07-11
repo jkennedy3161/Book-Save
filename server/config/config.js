@@ -12,7 +12,8 @@ var config = {
   db: {url: 'mongodb://127.0.0.1:27017/books'},
   expireTime: '10d',
   secrets: {
-    jwt: process.env.JWT || 'sushi'
+    jwt: process.env.JWT || 'sushi',
+    stripe: process.env.STRIPE || 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
   }
 };
 
