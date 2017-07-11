@@ -5,8 +5,11 @@ angular.module('bookstore', [
   'bookstore.shelf',
   'bookstore.details',
   'bookstore.services',
+  'angularPayments',
   'ngRoute'])
-.controller('bookstoreController', function() {
+.config(function($windowProvider) {
+  var $window = $windowProvider.$get();
+  $window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 })
 .config(function($routeProvider) {
   $routeProvider
