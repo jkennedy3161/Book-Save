@@ -49,13 +49,22 @@ span.message {
   text-align: center;
 }
 
-div.cart {
-  padding: 2em;
+div#cart {
   border: .75em solid grey;
   background-color: silver;
-  min-height: 100%;
-  width: 300px;
   float: right;
+  width : 300px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+div.shelf {
+  float: left;
+  margin: 2em;
+}
+
+.cart-display {
+  margin: 1em;
 }
 
 div.window:hover {
@@ -84,12 +93,13 @@ li {
   position: relative;
 }
 
-div.row {
-  margin: 2em;
-}
-
 div.shelfImage img > button {
   width: 128px;
   height: 183px;
   margin: 2em;
+}
+
+.shelfbtn {
+  display: block;
+  margin-bottom: 1em;
 }

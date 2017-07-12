@@ -16,16 +16,32 @@ angular.module('bookstore.landing', [])
       })
   };
   $scope.fetchBooks = function(search, index) {
-    Landing.getBooks(search, index)
-      .then(function(book) {
-        $scope.books = $scope.books.concat(book.items);
-        // clear search field
-        $scope.search = '';
-        $scope.index += 41;
-        //console.log('startIndex now ' + $scope.index);
-        $scope.savedSearch = search;
-        $scope.loadMore = false;
-      });
+    // handle if there's a search already
+    if (search === $scope.savedSearch) {
+      Landing.getBooks(search, index)
+        .then(function(book) {
+          $scope.books = $scope.books.concat(book.items);
+          // clear search field
+          $scope.search = '';
+          $scope.index += 41;
+          //console.log('startIndex now ' + $scope.index);
+          $scope.savedSearch = search;
+          $scope.loadMore = false;
+        });
+    } else {
+      $scope.books = [];
+      $scope.index = 0;
+      Landing.getBooks(search, index)
+        .then(function(book) {
+          $scope.books = $scope.books.concat(book.items);
+          // clear search field
+          $scope.search = '';
+          $scope.index += 41;
+          //console.log('startIndex now ' + $scope.index);
+          $scope.savedSearch = search;
+          $scope.loadMore = false;
+        });
+    }
   };
   $scope.saveBook = function(book) {
     var filterArr = book.volumeInfo.imageLinks.thumbnail.split('&');
