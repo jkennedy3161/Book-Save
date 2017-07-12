@@ -1,5 +1,5 @@
 angular.module('bookstore.shelf', [])
-.controller('ShelfController', function($scope, $routeParams, Shelf, Details, $window) {
+.controller('ShelfController', function($scope, $routeParams, Shelf, Details, $window, Auth) {
   $scope.collections = [];
   $scope.cart = [];
   $scope.id = $routeParams.id;
@@ -19,6 +19,13 @@ angular.module('bookstore.shelf', [])
     console.log($scope.cart);
     $scope.totalPrice += Number(book.price);
     $scope.roundedPrice = Math.floor($scope.totalPrice * 100) / 100;
+  };
+  $scope.removeBook = function(bookId) {
+    Auth.removeBook(bookId)
+      .then(function(book) {
+        $scope.alert = book.title + ' removed from your shelf!';
+        Shelf.getShelf().then(function(books) {$scope.collections = books;});
+      })
   };
   $scope.fakeBuy = function() {
     $scope.checkout = true;

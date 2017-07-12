@@ -13,7 +13,7 @@
     </div>
       <div id="navbar" class="navbar-collapse collapse">
         <button type="submit" ng-click="signout()" class="btn nav-btn btn-primary">Log Out</button>
-        <a href="/#!/shelf"><button class="btn btn-sm btn-primary">View Profile</button></a>
+        <a href="/#!/shelf"><button class="btn btn-sm btn-primary">View Shelf</button></a>
     </div>
   </nav>
   </div>
@@ -37,7 +37,8 @@
   <!-- show books that are purchasable only-->
   <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books track by $index">
     <div class="col-md-4 search-inner">
-    <img class="select" ng-click="saveBook(book)" ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
+    <img class="select" ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
+    <button class="btn btn-primary" ng-click="saveBook(book)">Add to your Shelf</button>
     </div>
     <div class="col-md-4 search-inner">
       <h2>{{ book.volumeInfo.title }}</h2>

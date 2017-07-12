@@ -53,7 +53,7 @@ div.cart {
   padding: 2em;
   border: .75em solid grey;
   background-color: silver;
-  height: 200%;
+  min-height: 100%;
   width: 300px;
   float: right;
 }
@@ -82,4 +82,14 @@ li {
   background-color: gray;
   border-radius: 2em;
   position: relative;
+}
+
+div.row {
+  margin: 2em;
+}
+
+div.shelfImage img > button {
+  width: 128px;
+  height: 183px;
+  margin: 2em;
 }
