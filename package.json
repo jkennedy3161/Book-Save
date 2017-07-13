@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jkennedy3161/wip-bookstore.git"
+    "url": "git+https://github.com/jkennedy3161/Book-Save.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jkennedy3161/wip-bookstore/issues"
+    "url": "https://github.com/jkennedy3161/Book-Save/issues"
   },
-  "homepage": "https://github.com/jkennedy3161/wip-bookstore#readme",
+  "homepage": "https://github.com/jkennedy3161/Book-Save#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
