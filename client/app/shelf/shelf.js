@@ -37,7 +37,7 @@ angular.module('bookstore.shelf', [])
   };
   $scope.removeBook = function(book) {
 
-    $scope.items -= book.dupl;
+    $scope.items -= (book.dupl === 0) ? 0 : book.dupl;
     // reset dupl for fresh cart
     Shelf.updateBook(book._id, {dupl: 0})
       .then(function(updatedBook) {
