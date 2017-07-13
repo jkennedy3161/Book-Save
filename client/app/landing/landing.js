@@ -7,7 +7,6 @@ angular.module('bookstore.landing', [])
   $scope.token = $window.localStorage.getItem('access_token');
   $scope.user = {};
   $scope.alert = '';
-  $scope.href = '';
   $scope.userId = function() {
     Auth.me($scope.token)
       .then(function(user) {
@@ -54,12 +53,17 @@ angular.module('bookstore.landing', [])
       smallThumbnail: smallThumbnail,
       description: book.volumeInfo.description,
       owners: [$window.localStorage.getItem('userId')],
-      price: book.saleInfo.retailPrice.amount
+      price: book.saleInfo.retailPrice.amount,
+      dupl: 0
     };
     Landing.saveBook(bookObj)
       .then(function(book) {
         //console.log(book);
         $scope.alert = (book.title + ' saved to your shelf!');
       })
+  };
+  $scope.signout = function() {
+    $window.localStorage.clear();
+    $location.path('/');
   };
 }]);
