@@ -34,10 +34,10 @@ angular.module('bookstore.services', [])
       return res.data;
     });
   };
-  var removeBook = function(bookId) {
+  var removeBook = function(book) {
     return $http({
       method: 'DELETE',
-      url: '/api/books/' + bookId,
+      url: '/api/books/' + book._id,
       params: {access_token: $window.localStorage.getItem('access_token')},
       ContentType: 'application/json'
     })
@@ -92,6 +92,19 @@ angular.module('bookstore.services', [])
       return res.data;
     });
   };
+  var updateBook = function(bookId, data) {
+    return $http({
+      method: 'PUT',
+      url: 'api/books/' + bookId,
+      params: {access_token: $window.localStorage.getItem('access_token')},
+      ContentType: 'application/json',
+      data: JSON.stringify(data)
+    })
+    .then(function(res) {
+      //console.log(res.data);
+      return res.data;
+    });
+  };
   var sendToken = function(data) {
     return $http({
       method: 'POST',
@@ -107,7 +120,8 @@ angular.module('bookstore.services', [])
 
   return {
     getShelf: getShelf,
-    sendToken: sendToken
+    sendToken: sendToken,
+    updateBook: updateBook
   };
 })
 .factory('Details', function($http) {
