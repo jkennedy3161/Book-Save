@@ -39,13 +39,13 @@ exports.getOne = function(req, res, next) {
 };
 
 exports.put = function(req, res, next) {
-  var post = req.post;
+  var book = req.book;
 
   var update = req.body;
 
-  _.merge(post, update);
+  _.merge(book, update);
 
-  post.save(function(err, saved) {
+  book.save(function(err, saved) {
     if (err) {
       next(err);
     } else {

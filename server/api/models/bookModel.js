@@ -12,7 +12,8 @@ var BookSchema = new Schema({
       ref: 'user'
     }
   ],
-  price: String
+  price: String,
+  dupl: Number
 });
 
 module.exports = mongoose.model('book', BookSchema);
