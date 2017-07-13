@@ -23,23 +23,18 @@
       <div class="row">
         <div class="col-md-4">
           <a href="{{ book.thumbnail }}"><img class="img-normal" ng-src="{{ book.thumbnail }}"></a>
-          <a class="select" ng-click="remove(book._id)"  aria-label="close">x</a>
         </div>
+      </div>
         <div class="col-md-6">
           <h5>{{ book.title }}</h5>
           <h6>by {{ book.authors[0] }} (Author)</h6>
           <p>{{ book.description }}</p>
         </div>
-      </div>
       <div class="row">
         <div class="col-md-6">
           <img class="img-small" ng-src="{{ book.smallThumbnail }}">
         </div>
       </div>
     </div>
-    <div ng-show="alert" class="savedBook navbar-fixed-bottom alert alert-danger alert-dismissable fade in" role="alert">
-  <a href="/#!/shelf" class="close" aria-label="close">&times;</a>
-    <strong>Danger! </strong>{{ alert }}
-  </div>
   </div>
 </div>
