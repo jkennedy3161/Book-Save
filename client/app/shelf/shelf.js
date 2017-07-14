@@ -67,6 +67,9 @@ angular.module('bookstore.shelf', [])
   $('#myInput').focus()
 })
   };
+  $scope.closeCart = function() {
+    $('#cart').collapse('toggle');
+  };
   $scope.stripeCallback = function(code, result) {
     if(result.error) {
       alert('it failed! error: ' + result.error.message);
@@ -81,11 +84,14 @@ angular.module('bookstore.shelf', [])
           var price = (response.amount / 100).toFixed(2);
           $scope.alert = response.outcome.seller_message +  ' Your card was charged with a total of $' + price;
         })
+
     }
     $('#myModal.modal').hide();
     $('.modal-backdrop').hide();
     // reset cart and price
     $scope.cart = [];
     $scope.roundedPrice = totalPrice = 0;
+    $scope.items = 0;
+    $('#cart').collapse('toggle');
   };
 })

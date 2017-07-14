@@ -54,7 +54,6 @@ div#cart {
   width : 300px;
   padding-top: 50px;
   padding-bottom: 20px;
-  position: absolute;
   z-index: 999;
   border-radius: 4px;
   border-color: #204d74;
@@ -125,4 +124,9 @@ img.book {
   font-family: Arial, serif;
   font-weight: bold;
   float: right;
+}
+
+.closeIcon {
+  font-size: 2em;
+  color: white;
 }
