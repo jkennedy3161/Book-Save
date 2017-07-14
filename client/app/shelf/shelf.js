@@ -54,6 +54,9 @@ angular.module('bookstore.shelf', [])
           })
           .then(function() {
             $scope.alert = book.title + ' removed from your shelf!';
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+              $("#success-alert").slideUp(500);
+          });
             Shelf.getShelf()
               .then(function(books) {
                 $scope.collections = books;

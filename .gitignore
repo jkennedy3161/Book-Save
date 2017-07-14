@@ -1,1 +1,3 @@
 node_modules
+server/resources/deploy2017.pem
+server/resources/EC2admin.txt
