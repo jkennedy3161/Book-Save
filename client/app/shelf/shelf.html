@@ -15,7 +15,7 @@
         <a href="/#!/landing"><button class="btn btn-primary">Search</button></a>
         <a href="/#!/shelf"><button class="btn btn-primary">Shelf</button></a>
         <button type="submit" ng-click="signout()" class="btn btn-primary">Log Out</button>
-        <a onclick="scroll(0,0)"><button type="button" class="glyphicon glyphicon-shopping-cart btn btn-primary" data-toggle="collapse" data-target="#cart" aria-expanded="false" aria-controls="cart"></button></a>
+        <a onclick="scroll(0,0)"><button type="button" class="shop btn btn-primary" data-toggle="collapse" data-target="#cart" aria-expanded="false" aria-controls="cart">Cart</button></a>
     </div>
   </div>
 </nav>
@@ -82,12 +82,13 @@
     <h2>Shelf</h2>
     <div class="row">
       <div class="shelfImage col-md-2" ng-repeat="collection in collections track by $index">
-        <a class="select" href="#!/details/{{collection._id}}"><img class="book" ng-src="{{ collection.smallThumbnail }}"></a>
-        <button ng-click="addToCart(collection)" class="btn btn-primary glyphicon glyphicon-shopping-cart" alt="add to cart"></button>
-        <button ng-click="removeBook(collection)" class="btn btn-primary glyphicon glyphicon-remove" alt="remove from shelf"></button>
-        <h6>${{ collection.price }}</h6>
+        <div class="item">
+          <a class="select" href="#!/details/{{collection._id}}"><img class="book" ng-src="{{ collection.smallThumbnail }}"></a>
+          <button ng-click="addToCart($event, $index, collection)" class="cart btn btn-primary glyphicon glyphicon-shopping-cart" alt="add to cart"></button>
+          <button ng-click="removeBook(collection)" class="delete btn btn-primary glyphicon glyphicon-remove" alt="remove from shelf"></button>
+          <h6>${{ collection.price }}</h6>
+        </div>
       </div>
-    </div>
     </div>
     </div>
     <div ng-show="alert" class="savedBook navbar-fixed-bottom alert alert-success alert-dismissable fade in" role="alert">

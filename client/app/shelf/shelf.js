@@ -13,7 +13,50 @@ angular.module('bookstore.shelf', [])
         $scope.collections = collections;
       });
   };
-  $scope.addToCart = function(book) {
+  $scope.addToCart = function($event, $index, book) {
+    var cart = $('.cart').eq($index);
+    var imgtodrag = (function(){
+       if ($event.currentTarget.nodeName === 'BUTTON') {
+          return angular.element($event.currentTarget).parent('.select').find('img').eq(0);
+       } else {
+          return angular.element($event.currentTarget);
+       }
+    })();
+    // animate if there is shopping icon on page
+    if (cart['0'].offsetTop) {
+      var imgclone = imgtodrag.clone()
+      $('.select').eq($index).css("left", cart['0'].offsetLeft);
+      console.log($('.select').eq($index)['0'].style.left);
+      //console.log(cart['0'].offsetLeft);
+      // append the clone to the selected book by index
+      $(imgclone).addClass('addToCart')
+      .appendTo($('.select').eq($index))
+      .animate({
+                'top': '0',
+                'width': 75,
+                'height': 95
+              }, 1000, 'easeInOutExpo')
+
+      setTimeout(function () {
+                  cart.effect("shake", {
+                      times: 2,
+                      distance: 5
+                  }, 200);
+              }, 1500);
+
+              $(imgclone).animate({
+                  'width': 0,
+                  'height': 0
+              }, function () {
+                  $(this).detach()
+              });
+      $scope.alert = '';
+    } else {
+      $scope.alert = book.title + ' added to your cart!';
+    }
+    //var imgclone = imgtodrag['0'].clone();
+    // fly to cart animation
+
       var bookNames = $scope.cart.map(function(book) {
         return book.title;
       });
@@ -33,7 +76,6 @@ angular.module('bookstore.shelf', [])
     $scope.items++;
     $scope.totalPrice += Number(book.price);
     $scope.roundedPrice = Math.floor($scope.totalPrice * 100) / 100;
-    $scope.alert = book.title + ' added to your cart!';
   };
   $scope.removeBook = function(book) {
 
