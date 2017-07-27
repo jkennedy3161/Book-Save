@@ -130,3 +130,29 @@ img.book {
   font-size: 2em;
   color: white;
 }
+
+.addToCart {
+  opacity: 0.5;
+  position: absolute;
+  top: 0px;
+  z-index: 999999;
+}
+
+a.select {
+  display: block;
+}
+
+button.shop{
+  position: relative;
+}
+
+.cart {
+  position: absolute;
+  top: -5px;
+}
+
+.delete {
+  position: absolute;
+  left: 118px;
+  top: -5px;
+}
