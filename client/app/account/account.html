@@ -24,7 +24,7 @@
             ng-model="password"
             required>
           </div>
-            <button type="submit" ng-click="signup(username, password)" ng-disabled="form.$invalid" class="btn btn-primary">Sign In</button>
+            <button type="submit" ng-click="signup(username, password)" ng-disabled="form.$invalid" class="btn btn-link">Sign In</button>
             <a href="/#!/signup">Register</a>
         </form>
       </div><!--/.navbar-collapse -->
@@ -34,6 +34,35 @@
       <div class="container">
         <h1>Book Save</h1>
         <p>Search. Save. Add to Cart. Review. Share. Welcome to Book Save! </p>
+        <div class="row">
+          <div class="col-md-4">
+            <p class="tut glyphicon glyphicon-check"></p>
+          </div>
+          <div class="col-md-4">
+          <p class="tut glyphicon glyphicon-search"></p>
+          </div>
+          <div class="col-md-4">
+          <p class="tut glyphicon glyphicon-shopping-cart"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <span>Sign in or register an account</span>
+          </div>
+          <div class="col-md-4">
+            <span>Search by book title and</span><br/>
+            <span>save to your personal shelf</span>
+          </div>
+          <div class="col-md-4">
+            <span>View your shelf and add saved books</span><br/>
+            <span>to your shopping cart for secure checkout!</span>
+          </div>
+        </div>
       </div>
+  </div>
+  <div class="navbar navbar-footer">
+    <center>
+      <h4>2017 Book Save</h4>
+    </center>
   </div>
 </div>

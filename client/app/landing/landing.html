@@ -12,9 +12,9 @@
       <a class="navbar-brand" href="#">Book Save</a>
     </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <a href="/#!/landing"><button class="btn btn-primary">Search</button></a>
-        <a href="/#!/shelf"><button class="btn btn-primary">Shelf</button></a>
-        <button type="submit" ng-click="signout()" class="btn btn-primary">Log Out</button>
+        <a href="/#!/landing"><button class="btn btn-link">Search</button></a>
+        <a href="/#!/shelf"><button class="btn btn-link">Shelf</button></a>
+        <button type="submit" ng-click="signout()" class="btn btn-link">Log Out</button>
     </div>
   </nav>
   </div>
@@ -27,7 +27,7 @@
       <div class="container">
         <form ng-submit="fetchBooks(search, index)">
           <input type="text" name="search" ng-model="search">
-          <button class="btn btn-success">Search</button>
+          <button class="glyphicon glyphicon-search"></button>
         </form>
       </div>
   </div>
@@ -39,7 +39,7 @@
   <div ng-show="book.saleInfo.retailPrice" class="row search" ng-repeat="book in books track by $index">
     <div class="col-md-4 search-inner">
     <img class="select" ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
-    <button class="btn btn-primary" ng-click="saveBook(book)">Add to your Shelf</button>
+    <button class="save glyphicon glyphicon-star" ng-click="saveBook(book)"></button>
     </div>
     <div class="col-md-4 search-inner">
       <h2>{{ book.volumeInfo.title }}</h2>
@@ -60,10 +60,16 @@
     <div class="col-md-4 search-inner">
     </div>
     <div class="col-md-4 search-inner">
-      <h3>No books found...</h3>
+      <h3>No books found try searching...</h3>
     </div>
     <div class="col-md-4 search-inner">
     </div>
   </div>
 
+  <div class="navbar navbar-footer">
+    <center>
+      <h4>2017 Book Save | <a class="footer btn btn-link" ng-href="">Search</a><a class="footer btn btn-link" ng-href="/#!/shelf">Shelf</a></h4>
+    </center>
+  </div>
 </div>
+

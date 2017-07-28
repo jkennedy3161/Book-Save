@@ -12,10 +12,10 @@
       <a class="navbar-brand" href="#">Book Save</a>
     </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <a href="/#!/landing"><button class="btn btn-primary">Search</button></a>
-        <a href="/#!/shelf"><button class="btn btn-primary">Shelf</button></a>
-        <button type="submit" ng-click="signout()" class="btn btn-primary">Log Out</button>
-        <a onclick="scroll(0,0)"><button type="button" class="shop btn btn-primary" data-toggle="collapse" data-target="#cart" aria-expanded="false" aria-controls="cart">Cart</button></a>
+        <a href="/#!/landing"><button class="btn btn-link">Search</button></a>
+        <a href="/#!/shelf"><button class="btn btn-link">Shelf</button></a>
+        <button type="submit" ng-click="signout()" class="btn btn-link">Log Out</button>
+        <a onclick="scroll(0,0)"><button type="button" class="shop btn btn-link" data-toggle="collapse" data-target="#cart" aria-expanded="false" aria-controls="cart">Cart</button></a>
     </div>
   </div>
 </nav>
@@ -84,12 +84,17 @@
       <div class="shelfImage col-md-2" ng-repeat="collection in collections track by $index">
         <div class="item">
           <a class="select" href="#!/details/{{collection._id}}"><img class="book" ng-src="{{ collection.smallThumbnail }}"></a>
-          <button ng-click="addToCart($event, $index, collection)" class="cart btn btn-primary glyphicon glyphicon-shopping-cart" alt="add to cart"></button>
-          <button ng-click="removeBook(collection)" class="delete btn btn-primary glyphicon glyphicon-remove" alt="remove from shelf"></button>
+          <button ng-click="addToCart($event, $index, collection)" class="cart glyphicon glyphicon-shopping-cart" alt="add to cart"></button>
+          <button ng-click="removeBook(collection)" class="delete glyphicon glyphicon-remove" alt="remove from shelf"></button>
           <h6>${{ collection.price }}</h6>
         </div>
       </div>
     </div>
+    <div class="navbar navbar-footer">
+    <center>
+      <h4>2017 Book Save | <a class="footer btn btn-link" ng-href="">Search</a><a class="footer btn btn-link" ng-href="/#!/shelf">Shelf</a></h4>
+    </center>
+  </div>
     </div>
     <div ng-show="alert" class="savedBook navbar-fixed-bottom alert alert-success alert-dismissable fade in" role="alert">
     <a href="/#!/landing" class="close" aria-label="close">&times;</a>
