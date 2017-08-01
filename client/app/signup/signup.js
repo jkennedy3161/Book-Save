@@ -5,10 +5,7 @@ angular.module('bookstore.signup', [])
     Auth.signup(data)
       .then(function(token) {
         $window.localStorage.setItem('access_token', token);
-      })
-      .then(function() {
-        if($scope.token)
-            $location.path('/landing')
+        $location.path('/landing');
       });
   };
 });

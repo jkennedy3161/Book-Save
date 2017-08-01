@@ -12,11 +12,12 @@ angular.module('bookstore.account', [])
           alert('no username found!');
         } else {
           $window.localStorage.setItem('access_token', user.token);
-        }
-      })
-      .then(function() {
-        if($scope.token)
+          if($scope.token) {
             $location.path('/landing')
+          } else {
+            $location.path('/signup');
+          }
+        }
       })
       .catch(function(err) {
         //console.log(err);
