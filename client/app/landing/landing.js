@@ -2,6 +2,8 @@ angular.module('bookstore.landing', [])
 .controller('LandingController', ['$scope', '$http', 'Landing', 'Auth', '$window', '$location', function($scope, $routeParams, Landing, Auth, $window, $location) {
   $scope.books = [];
   $scope.savedSearch = '';
+  $scope.savedMax = null;
+  $scope.savedOrder = '';
   $scope.page = 1;
   $scope.index = 0;
   $scope.token = $window.localStorage.getItem('access_token');
@@ -14,10 +16,10 @@ angular.module('bookstore.landing', [])
         $window.localStorage.setItem('userId', user._id);
       })
   };
-  $scope.fetchBooks = function(search, index) {
+  $scope.fetchBooks = function(search, index, max, orderBy) {
     // handle if there's a search already
     if (search === $scope.savedSearch) {
-      Landing.getBooks(search, index)
+      Landing.getBooks(search, index, $scope.savedMax, $scope.savedOrder)
         .then(function(book) {
           $scope.books = $scope.books.concat(book.items);
           // clear search field
@@ -30,14 +32,16 @@ angular.module('bookstore.landing', [])
     } else {
       $scope.books = [];
       $scope.index = 0;
-      Landing.getBooks(search, index)
+      Landing.getBooks(search, index, max, orderBy)
         .then(function(book) {
           $scope.books = $scope.books.concat(book.items);
           // clear search field
           $scope.search = '';
           $scope.index += 41;
-          //console.log('startIndex now ' + $scope.index);
           $scope.savedSearch = search;
+          $scope.savedMax = max;
+          console.log('max result is now ' + $scope.savedMax);
+          $scope.savedOrder = orderBy;
           $scope.loadMore = false;
         });
     }

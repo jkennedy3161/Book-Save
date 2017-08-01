@@ -53,10 +53,10 @@ angular.module('bookstore.services', [])
   }
 })
 .factory('Landing', function($http, $window) {
-  var getBooks = function(search, index) {
+  var getBooks = function(search, index, max, orderBy) {
     return $http({
       method: 'GET',
-      url: 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&printType=books&orderBy=relevance&filter=ebooks&maxResults=40&startIndex=' + index
+      url: 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&printType=books&orderBy=' + orderBy + '&filter=ebooks&maxResults=' + max + '&startIndex=' + index
     })
     .then(function(res) {
       return res.data;
