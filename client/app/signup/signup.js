@@ -6,8 +6,10 @@ angular.module('bookstore.signup', [])
       Auth.signup(data)
         .then(function(token) {
           $window.localStorage.setItem('access_token', token);
-          if($window.localStorage.access_token) {
+          if($window.localStorage.access_token !== undefined) {
             $location.path('/landing');
+          } else {
+            document.write('user with username already created, use different username');
           }
         });
     }
