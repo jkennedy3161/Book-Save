@@ -1,18 +1,17 @@
-<div ng-controller="LandingController" ng-init="userId()">
+<div ng-controller="LandingController">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <span class="navbar-brand message">Hi {{ user.username }}</span>
+        <span class="navbar-brand message">Hi, {{ user.username }}</span>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/#!/landing">Book Save</a>
+      <a class="navbar-brand" href="#">Book Save</a>
     </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <a href="/#!/landing"><button class="btn btn-link">Search</button></a>
         <a href="/#!/shelf"><button class="btn btn-link">Shelf</button></a>
         <button type="submit" ng-click="signout()" class="btn btn-link">Log Out</button>
     </div>

@@ -23,6 +23,20 @@ angular.module('bookstore.services', [])
       return res.data;
     });
   };
+  var returningUser = function(userId) {
+    console.log(userId);
+    return $http({
+      method: 'GET',
+      url: '/api/users/' + userId,
+      headers: $window.localStorage.getItem('access_token'),
+      ContentType: 'application/json'
+    })
+    .then(function(res) {
+      console.log(res.data);
+      return res.data;
+    })
+  };
+
   var me = function(token) {
     return $http({
       method: 'GET',
@@ -49,7 +63,8 @@ angular.module('bookstore.services', [])
     signup: signup,
     signin: signin,
     me: me,
-    removeBook: removeBook
+    removeBook: removeBook,
+    returningUser: returningUser
   }
 })
 .factory('Landing', function($http, $window) {

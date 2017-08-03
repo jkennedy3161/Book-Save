@@ -9,13 +9,20 @@ angular.module('bookstore.landing', [])
   $scope.token = $window.localStorage.getItem('access_token');
   $scope.user = {};
   $scope.alert = '';
-  $scope.userId = function() {
+  $scope.userId = $window.localStorage.getItem('userId') || '';
+  // if user id is present, then retrieve user info for return sign in
+  if ($scope.userId) {
+    Auth.returningUser($scope.userId)
+      .then(function(user) {
+        $scope.user = user;
+    })
+  } else {
     Auth.me($scope.token)
       .then(function(user) {
         $scope.user = user;
-        $window.localStorage.setItem('userId', user._id);
+        $scope.userId = $window.localStorage.setItem('userId', user._id);
       })
-  };
+  }
   $scope.fetchBooks = function(search, index, max, orderBy) {
     // handle if there's a search already
     if (search === $scope.savedSearch) {
