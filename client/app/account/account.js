@@ -17,6 +17,7 @@ angular.module('bookstore.account', [])
           alert('no username found!');
         } else {
           $window.localStorage.setItem('access_token', user.token);
+          $location.path('/landing');
         }
       })
       .catch(function(err) {
