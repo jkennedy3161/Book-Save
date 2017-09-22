@@ -8,9 +8,9 @@ var config = {
   dev: 'development',
   test: 'testing',
   prod: 'production',
-  port: process.env.OPENSHIFT_NODEJS_PORT || 3000,
-  //db: {url: 'mongodb://127.0.0.1:27017/books'},
-  db: {url: 'mongodb://jj:test@ec2-54-69-209-87.us-west-2.compute.amazonaws.com:27017/dummyDB'},
+  port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
+  db: {url: 'mongodb://127.0.0.1:27017/books'},
+  //db: {url: 'mongodb://jj:test@ec2-54-69-209-87.us-west-2.compute.amazonaws.com:27017/dummyDB'},
   expireTime: '10d',
   secrets: {
     jwt: process.env.JWT || 'sushi',
