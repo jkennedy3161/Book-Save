@@ -11,7 +11,11 @@ var stripe = require("stripe")(config.secrets.stripe);
 require('./middleware/middleware')(app, express);
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.db.url);
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+  mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL + 'books');
+} else {
+  mongoose.connect(config.db.url);
+}
 
 // setup routes
 app.use('/api', api);
