@@ -10,7 +10,7 @@ var stripe = require("stripe")(config.secrets.stripe);
 // handles serving static assets and returning json body from requests
 require('./middleware/middleware')(app, express);
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080);
 
 app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
