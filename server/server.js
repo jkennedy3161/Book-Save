@@ -11,8 +11,14 @@ var stripe = require("stripe")(config.secrets.stripe);
 require('./middleware/middleware')(app, express);
 
 mongoose.Promise = global.Promise;
-if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-  mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL + 'books', {useMongoClient: true});
+var connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+    process.env.OPENSHIFT_APP_NAME;
+
+if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+  mongoose.connect(connection_string, {useMongoClient: true});
 } else {
   mongoose.connect(config.db.url, { useMongoClient: true });
 }
