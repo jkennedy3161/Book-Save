@@ -2,9 +2,9 @@
   "name": "Book-Save",
   "version": "1.0.0",
   "description": "e-commerce bookstore",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
