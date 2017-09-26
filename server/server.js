@@ -11,14 +11,15 @@ var stripe = require("stripe")(config.secrets.stripe);
 require('./middleware/middleware')(app, express);
 
 mongoose.Promise = global.Promise;
-var connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-    process.env.OPENSHIFT_APP_NAME;
+var connection_string = config.db.url;
 
-if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-  mongoose.connect(connection_string, {useMongoClient: true});
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME;
+  mongoose.connect(connection_string, { useMongoClient: true });
 } else {
   mongoose.connect(config.db.url, { useMongoClient: true });
 }

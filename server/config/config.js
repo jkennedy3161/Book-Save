@@ -9,9 +9,9 @@ var config = {
   test: 'testing',
   prod: 'production',
   //port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
-  db: {url: 'mongodb://127.0.0.1:27017/books'},
+  db: {url: 'mongodb://127.0.0.1:27017/booksave'},
   //db: {url: 'mongodb://jj:test@ec2-54-69-209-87.us-west-2.compute.amazonaws.com:27017/dummyDB'},
-  expireTime: '10d',
+  expireTime: '5d',
   secrets: {
     jwt: process.env.JWT || 'sushi',
     stripe: process.env.STRIPE || 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
