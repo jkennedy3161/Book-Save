@@ -18,7 +18,7 @@ mongoose.Promise = global.Promise;
 var connection_string = config.db.url;
 
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  connection_string = "mongodb://" + process.env.$OPENSHIFT_MONGODB_DB_HOST + ":" + process.env.OPENSHIFT_MONGODB_DB_PORT + "/booksave";
+  connection_string = "mongodb://" + process.env.OPENSHIFT_MONGODB_DB_HOST + ":" + process.env.OPENSHIFT_MONGODB_DB_PORT + "/booksave";
   mongoose.connect(connection_string, { useMongoClient: true });
 } else {
   mongoose.connect(connection_string, { useMongoClient: true });
