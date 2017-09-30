@@ -7,22 +7,20 @@ var err = require('./middleware/err');
 var config = require('./config/config');
 var auth = require('./auth/routes');
 var stripe = require("stripe")(config.secrets.stripe);
+
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000);
+
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 // handles serving static assets and returning json body from requests
 require('./middleware/middleware')(app, express);
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || '8080');
-
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
-
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 var connection_string = config.db.url;
-
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  connection_string = "mongodb://" + process.env.OPENSHIFT_MONGODB_DB_HOST + ":" + process.env.OPENSHIFT_MONGODB_DB_PORT + "/booksave";
-  mongoose.connect(connection_string, { useMongoClient: true });
-} else {
-  mongoose.connect(connection_string, { useMongoClient: true });
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
 }
+mongoose.connect(connection_string, { useMongoClient: true });
+
 
 
 // setup routes
