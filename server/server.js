@@ -11,7 +11,7 @@ var stripe = require("stripe")(config.secrets.stripe);
 require('./middleware/middleware')(app, express);
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.db.url, {MongoClient: true});
+mongoose.connect(config.db.url, {useMongoClient: true});
 
 // setup routes
 app.use('/api', api);
