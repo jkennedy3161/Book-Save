@@ -9,8 +9,8 @@ var config = {
   test: 'testing',
   prod: 'production',
   port: process.env.PORT || 3000,
-  //db: {url: 'mongodb://127.0.0.1:27017/books'},
-  db: {url: 'mongodb://jj:test@ec2-54-69-209-87.us-west-2.compute.amazonaws.com:27017/dummyDB'},
+  db: {url: 'mongodb://127.0.0.1:27017/books'},
+  //db: {url: 'mongodb://jj:test@ec2-54-69-209-87.us-west-2.compute.amazonaws.com:27017/dummyDB'},
   expireTime: '10d',
   secrets: {
     jwt: process.env.JWT || 'sushi',
